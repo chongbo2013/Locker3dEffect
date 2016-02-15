@@ -9,7 +9,8 @@ public class EffectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GLSurfaceView view=new HelloOpenGLES10SurfaceView(this);
+//        GLSurfaceView view=new HelloOpenGLES10SurfaceView(this);
+        OpenGLView view=new OpenGLView(this);
         setContentView(view);
     }
 }
