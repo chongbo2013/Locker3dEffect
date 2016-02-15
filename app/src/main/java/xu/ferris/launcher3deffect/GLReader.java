@@ -49,7 +49,7 @@ public class GLReader implements Renderer{
     FloatBuffer cubeBuff;
 
     float xrot = 0.0f;
-    float yrot = 0.0f;
+    public float yrot = 0.0f;
     /**
      * 将float数组转换存储在字节缓冲数组
      * @param arr

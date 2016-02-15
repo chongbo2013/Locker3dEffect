@@ -1,18 +1,20 @@
-package xu.ferris.launcher3deffect;
+package xu.ferris.launcher3deffect.cube;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import xu.ferris.launcher3deffect.GLReader;
+
 /**
  * Created by Administrator on 2016/2/15.
  */
-public class OpenGLView extends GLSurfaceView {
-    private GLReader glReader;
+public class CubeGLView extends GLSurfaceView {
+    private CubeRenderer glReader;
 
-    public OpenGLView(Context context) {
+    public CubeGLView(Context context) {
         super(context);
         // TODO Auto-generated constructor stub
-        glReader=new GLReader();
+        glReader=new CubeRenderer(context);
         setRenderer(glReader);
     }
     public void setRadio(float radio){
