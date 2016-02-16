@@ -18,7 +18,8 @@ import xu.ferris.launcher3deffect.R;
 
 public class CubeRenderer implements Renderer {
 
-    Bitmap bmp;
+    Bitmap bmp,sideBimap;
+
     float box[] = new float[] {
             // FRONT
             -1f, -1f,  0.10f,
@@ -153,9 +154,10 @@ public class CubeRenderer implements Renderer {
         normBuff = makeFloatBuffer(norms);
         texBuff = makeFloatBuffer(texCoords);
         bmp = BitmapFactory.decodeResource(c.getResources(), R.drawable.splash);
+        sideBimap= BitmapFactory.decodeResource(c.getResources(), R.drawable.test_2);
     }
 
-
+    private int[] textureids=null;
     protected void init(GL10 gl) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);//设置清屏时背景的颜色，R，G，B，A
 
@@ -174,20 +176,41 @@ public class CubeRenderer implements Renderer {
         gl.glEnable(GL10.GL_TEXTURE_2D);
 
         // 2.生成纹理ID
-        int[] tmp_tex = new int[1];//尽管只有一个纹理，但使用一个元素的数组
+        textureids = new int[2];//尽管只有一个纹理，但使用一个元素的数组
         //glGenTextures(申请个数，存放数组，偏移值）
-        gl.glGenTextures(1, tmp_tex, 0); //向系统申请可用的，用于标示纹理的ID
-        int texture = tmp_tex[0];
+        gl.glGenTextures(2, textureids, 0); //向系统申请可用的，用于标示纹理的ID
+
+
 
         //3.绑定纹理，使得指定纹理处于活动状态。一次只能激活一个纹理
-        gl.glBindTexture(GL10.GL_TEXTURE_2D, texture);
-
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[0]);
         //4.绑定纹理数据，传入指定图片
         GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bmp, 0);
 
+
+        gl.glTexParameterx(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MAG_FILTER,GL10.GL_LINEAR);
+        gl.glTexParameterx(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,GL10.GL_LINEAR);
+        gl.glEnable(GL10.GL_DEPTH_TEST); //启用深度缓存
+        gl.glEnable(GL10.GL_CULL_FACE);  //启用背面剪裁
+        gl.glClearDepthf(1.0f);    // 设置深度缓存值
+        gl.glDepthFunc(GL10.GL_LEQUAL);  // 设置深度缓存比较函数，GL_LEQUAL表示新的像素的深度缓存值小于等于当前像素的深度缓存值（通过gl.glClearDepthf(1.0f)设置）时通过深度测试
+        gl.glShadeModel(GL10.GL_SMOOTH);// 设置阴影模式GL_SMOOTH
+
+
+        //3.绑定纹理，使得指定纹理处于活动状态。一次只能激活一个纹理
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[1]);
+        //4.绑定纹理数据，传入指定图片
+        GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, sideBimap, 0);
+
+
+
+
+
+
+
         //5.传递各个顶点对应的纹理坐标
-        gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, texBuff);
-        gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY); //开启纹理坐标数组
+//        gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, texBuff);
+//        gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY); //开启纹理坐标数组
 
         //6.设置纹理参数 （可选）
         /*下面的两行参数告诉OpenGL在显示图像时，当它比放大得原始的纹理大
@@ -199,8 +222,6 @@ public class CubeRenderer implements Renderer {
         **/
         gl.glTexParameterx(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MAG_FILTER,GL10.GL_LINEAR);
         gl.glTexParameterx(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,GL10.GL_LINEAR);
-
-
         gl.glEnable(GL10.GL_DEPTH_TEST); //启用深度缓存
         gl.glEnable(GL10.GL_CULL_FACE);  //启用背面剪裁
         gl.glClearDepthf(1.0f);    // 设置深度缓存值
@@ -220,7 +241,7 @@ public class CubeRenderer implements Renderer {
         gl.glViewport(0, 0, w, h); //设置视窗
         gl.glMatrixMode(GL10.GL_PROJECTION); // 设置投影矩阵
         gl.glLoadIdentity();  //设置矩阵为单位矩阵，相当于重置矩阵
-        GLU.gluPerspective(gl, 45.0f, ((float) w) / h, 0.1f, 10f);//设置透视范围
+        GLU.gluPerspective(gl, 90.0f, ((float) w) / h, 0.1f, 10f);//设置透视范围
     }
 
     @Override
@@ -234,21 +255,32 @@ public class CubeRenderer implements Renderer {
 
         gl.glVertexPointer(3, GL10.GL_FLOAT, 0, cubeBuff);//设置顶点数据
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+        gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);// 使用纹理数组
+       gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, texBuff);
 
-        //gl.glRotatef(xrot, 1, 0, 0);  //绕着(0,0,0)与(1,0,0)即x轴旋转
         gl.glRotatef(yrot, 0, 1, 0);
 
-        gl.glColor4f(1.0f, 0, 0, 1.0f);   //设置颜色，红色
+
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[0]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);  //绘制正方型FRONT面
+
+
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[0]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 4, 4);
 
-        gl.glColor4f(0, 1.0f, 0, 1.0f);
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[1]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 8, 4);
+
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[1]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 12, 4);
 
-        gl.glColor4f(0, 0, 1.0f, 1.0f);
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[1]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 16, 4);
+
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[1]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 20, 4);
+
+
 
         xrot += 0.5f;
         yrot += 0.5f;
