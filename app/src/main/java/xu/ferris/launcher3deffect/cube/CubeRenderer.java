@@ -21,35 +21,35 @@ public class CubeRenderer implements Renderer {
     Bitmap bmp;
     float box[] = new float[] {
             // FRONT
-            -0.5f, -0.5f,  0.5f,
-            0.5f, -0.5f,  0.5f,
-            -0.5f,  0.5f,  0.5f,
-            0.5f,  0.5f,  0.5f,
+            -1f, -1f,  0.10f,
+            1f, -1f,  0.10f,
+            -1f,  1f,  0.10f,
+            1f,  1f, 0.10f,
             // BACK
-            -0.5f, -0.5f, -0.5f,
-            -0.5f,  0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f,  0.5f, -0.5f,
+            1f, -1f, -0.10f,
+            -1f,  -1f, -0.10f,
+            1f, 1f, -0.10f,
+           -1f,  1f, -0.10f,
             // LEFT
-            -0.5f, -0.5f,  0.5f,
-            -0.5f,  0.5f,  0.5f,
-            -0.5f, -0.5f, -0.5f,
-            -0.5f,  0.5f, -0.5f,
+            -1f, -1f,  -0.10f,
+            -1f,  -1f, 0.10f,
+            -1f, 1f, -0.10f,
+            -1f,  1f, 0.10f,
             // RIGHT
-            0.5f, -0.5f, -0.5f,
-            0.5f,  0.5f, -0.5f,
-            0.5f, -0.5f,  0.5f,
-            0.5f,  0.5f,  0.5f,
+            1f, -1f, 0.10f,
+            1f,  -1f, -0.10f,
+            1f, 1f,  0.10f,
+            1f,  1f,  -0.10f,
             // TOP
-            -0.5f,  0.5f,  0.5f,
-            0.5f,  0.5f,  0.5f,
-            -0.5f,  0.5f, -0.5f,
-            0.5f,  0.5f, -0.5f,
+            -1f,  1f,  0.10f,
+            1f,  1f,  0.10f,
+            -1f,  1f, -0.10f,
+            1f,  1f, -0.10f,
             // BOTTOM
-            -0.5f, -0.5f,  0.5f,
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f,  0.5f,
-            0.5f, -0.5f, -0.5f,
+            -1f, -1f, 0.10f,
+            1f, -1f, 0.10f,
+            -1f, -1f,  -0.10f,
+            1f, -1f, -0.10f,
     };
 
     float lightAmbient[] = new float[] { 0.5f, 0.5f, 0.6f, 1.0f };  //环境光
@@ -230,12 +230,12 @@ public class CubeRenderer implements Renderer {
 
         gl.glMatrixMode(GL10.GL_MODELVIEW);   //切换至模型观察矩阵
         gl.glLoadIdentity();// 重置当前的模型观察矩阵
-        GLU.gluLookAt(gl, 0, 0, 3, 0, 0, 0, 0, 1, 0);//设置视点和模型中心位置
+        GLU.gluLookAt(gl, 0, 0, 3, 0, 0, 0, 0, -1, 0);//设置视点和模型中心位置
 
         gl.glVertexPointer(3, GL10.GL_FLOAT, 0, cubeBuff);//设置顶点数据
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 
-        gl.glRotatef(xrot, 1, 0, 0);  //绕着(0,0,0)与(1,0,0)即x轴旋转
+        //gl.glRotatef(xrot, 1, 0, 0);  //绕着(0,0,0)与(1,0,0)即x轴旋转
         gl.glRotatef(yrot, 0, 1, 0);
 
         gl.glColor4f(1.0f, 0, 0, 1.0f);   //设置颜色，红色
