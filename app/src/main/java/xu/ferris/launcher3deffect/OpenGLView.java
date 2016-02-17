@@ -1,6 +1,7 @@
 package xu.ferris.launcher3deffect;
 
 import android.content.Context;
+import android.graphics.PixelFormat;
 import android.opengl.GLSurfaceView;
 
 /**
@@ -14,6 +15,11 @@ public class OpenGLView extends GLSurfaceView {
         // TODO Auto-generated constructor stub
         glReader=new GLReader();
         setRenderer(glReader);
+
+        setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+
+       getHolder().setFormat(PixelFormat.TRANSLUCENT);
+        setZOrderOnTop(true);
     }
     public void setRadio(float radio){
         glReader.yrot=radio*360;

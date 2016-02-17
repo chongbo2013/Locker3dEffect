@@ -1,13 +1,11 @@
 package xu.ferris.launcher3deffect;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import xu.ferris.launcher3deffect.cube.CubeGLView;
-import xu.ferris.launcher3deffect.cube2.GLImage;
-import xu.ferris.launcher3deffect.cube2.GLView;
 
-public class EffectActivity extends AppCompatActivity {
+public class EffectActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

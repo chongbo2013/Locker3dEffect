@@ -154,13 +154,14 @@ public class CubeRenderer implements Renderer {
         normBuff = makeFloatBuffer(norms);
         texBuff = makeFloatBuffer(texCoords);
         bmp = BitmapFactory.decodeResource(c.getResources(), R.drawable.splash);
-        sideBimap= BitmapFactory.decodeResource(c.getResources(), R.drawable.test_2);
+        sideBimap= BitmapFactory.decodeResource(c.getResources(), R.drawable.test_1);
     }
 
     private int[] textureids=null;
     protected void init(GL10 gl) {
-        gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);//设置清屏时背景的颜色，R，G，B，A
-
+        gl.glClearColor(0,0,0,0);//设置清屏时背景的颜色，R，G，B，A
+        gl.glEnable(GL10.GL_BLEND);
+        gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         gl.glEnable(GL10.GL_LIGHTING); //启用光照
         gl.glEnable(GL10.GL_LIGHT0);  //开启光源0
         //设置光照参数，也可以使用默认的，不设置
@@ -261,9 +262,12 @@ public class CubeRenderer implements Renderer {
         gl.glRotatef(yrot, 0, 1, 0);
 
 
+
         gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[0]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);  //绘制正方型FRONT面
 
+        gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[1]);
+        gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
 
         gl.glBindTexture(GL10.GL_TEXTURE_2D, textureids[0]);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 4, 4);
