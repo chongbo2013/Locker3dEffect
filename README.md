@@ -11,7 +11,9 @@ ModelView(3d模型控件，支持存放3d模型场景)
 ParticleView（粒子效果控件）  
 View(3d view)  
 ViewGroup(3d ViewGroup)  
-
+3、Events事件消息系统，可以接受View传递到事件或者点击效果等。  
+4、Animations动画扩展类CustomRotateAnimation 支持3D翻转动画、CustomAccelerometerAnimation支持重力感应动画  
+5、支持Face蒙皮效果，分为GifFace（支持播放Gif），NormalFace（支持3D法线贴图），TextureFace（纹理贴图），VideoFace(支持将视频贴到模型或者View中)。其他Face,RedDotFace(绘制小红点)，TimeFace（绘制时间）
 ## 预览图
 <p align="left">
   <img alt="android lock pre" width="270" height="480" src="https://github.com/chongbo2013/Launcher3dEffect/blob/master/WX20200704-202931%402x.png">
