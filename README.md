@@ -14,7 +14,7 @@ ViewGroup(3d ViewGroup)
 
 ## 预览图
 <p align="left">
-  <img alt="android lock pre" src="https://github.com/chongbo2013/Launcher3dEffect/blob/master/WX20200704-202931%402x.png">
+  <img alt="android lock pre" width = "540" height = "960" src="https://github.com/chongbo2013/Launcher3dEffect/blob/master/WX20200704-202931%402x.png">
 </p>
 
 ## DIY主题模版样例
