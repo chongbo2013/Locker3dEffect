@@ -23,7 +23,7 @@ ViewGroup(3d ViewGroup)
 
 ## 作者其他作品推荐
 <p align="left">
-  <img alt="android lock pre" width="270" height="480" src="https://github.com/chongbo2013/Launcher3dEffect/blob/master/aaa.png">
+  <img alt="android lock pre" width="472" height="416" src="https://github.com/chongbo2013/Launcher3dEffect/blob/master/aaa.png">
     <a href="https://www.coolapk.com/apk/com.phone.launcher.android_live_HD_wallpaper_efficiency_customize_apsu">GO Play Store</a>  
 </p>
 
