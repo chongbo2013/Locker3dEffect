@@ -24,8 +24,7 @@ ViewGroup(3d ViewGroup)
 ## 作者其他作品推荐
 <p align="left">
   <img alt="android lock pre" width="270" height="480" src="https://www.coolapk.com/apk/com.phone.launcher.android_live_HD_wallpaper_efficiency_customize_apsu#ex-screenshot-carousel">
-  
-   <a href="https://www.coolapk.com/apk/com.phone.launcher.android_live_HD_wallpaper_efficiency_customize_apsu"><img alt="GO Play Store " 
+    <a href="https://pub.dartlang.org/packages/MediaCompression">GO Play Store</a>  
 </p>
 
 
