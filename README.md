@@ -3,14 +3,14 @@
 # 安卓3D场景 锁屏配置模版框架
 
 ## 采用技术
-1、基于libgdx游戏引擎进行插件化开发模版
-2、采用xml进行解析配置模版，封装多种3D控件可自由组合
-ElvesView(spine2D骨骼动画)
-ImageView（2d图片）
-ModelView(3d模型控件，支持存放3d模型场景)
-ParticleView（粒子效果控件）
-View(3d view)
-ViewGroup(3d ViewGroup)
+1、基于libgdx游戏引擎进行插件化开发模版. 
+2、采用xml进行解析配置模版，封装多种3D控件可自由组合. 
+ElvesView(spine2D骨骼动画). 
+ImageView（2d图片）. 
+ModelView(3d模型控件，支持存放3d模型场景). 
+ParticleView（粒子效果控件）. 
+View(3d view). 
+ViewGroup(3d ViewGroup)  
 
 ## 预览图
 <p align="left">
