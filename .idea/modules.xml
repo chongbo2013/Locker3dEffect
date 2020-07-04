@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Launcher3dEffect.iml" filepath="$PROJECT_DIR$/Launcher3dEffect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Launcher3dEffect-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Launcher3dEffect-app.iml" group="Launcher3dEffect/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev-Launcher3dEffect.iml" filepath="$PROJECT_DIR$/.idea/modules/dev-Launcher3dEffect.iml" group="Launcher3dEffect" />
     </modules>
   </component>
 </project>

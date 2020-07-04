@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="color_spine_msg_item_open">#ff404040</color>
+    <color name="color_spine_msg_item_del">#ffeb4646</color>
+    <color name="color_spine_msg_item_title">#ff888ab4</color>
+    <color name="color_spine_msg_item_content">#b3888ab4</color>
+    <color name="color_spine_msg_item_time">#b3888ab4</color>
+    <color name="color_spine_msg_list_divider">#b3888ab4</color>
 </resources>
