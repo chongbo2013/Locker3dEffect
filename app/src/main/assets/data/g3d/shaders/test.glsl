@@ -186,10 +186,6 @@ void main() {
         //add video support by ferris.xu
      #if defined(videoTextureFlag)
          vec4 video=texture2D(u_videoTexture, v_videoUV);
-//         vec3 blackVec3=vec3(0.0, 0.0, 0.0);
-//          if(distance(video.rgb,blackVec3.rgb) <0.25){
-//              discard;
-//          }
          #if defined(diffuseTextureFlag)
          video.rgb*= (texture2D(u_diffuseTexture, v_diffuseUV)).rgb;
          #endif
@@ -288,5 +284,4 @@ void main() {
     		#endif
     	#endif
         gl_FragColor.rgb*=gl_FragColor.a;
-
 }

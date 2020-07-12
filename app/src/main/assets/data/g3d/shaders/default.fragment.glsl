@@ -187,5 +187,4 @@ void main() {
 	//fix mul alpha pre by ferris.xu
 	//需要配合混合模式
     gl_FragColor.rgb*=gl_FragColor.a;
-   
 }
